@@ -48,8 +48,8 @@ type ApplyMsg struct {
 // students defined, used for Raft class
 type LogEntry struct {
 	Command interface{}
-	term    int
-	index   int
+	Term    int
+	Index   int
 }
 
 // Role type ...
@@ -161,10 +161,10 @@ func (rf *Raft) readPersist(data []byte) {
 //
 type RequestVoteArgs struct {
 	// Your data here (2A, 2B).
-	term         int
-	candidatedID int
-	lastLogIndex int
-	lastLogTerm  int
+	Term         int
+	CandidatedID int
+	LastLogIndex int
+	LastLogTerm  int
 }
 
 // RequestVoteReply ...
@@ -173,8 +173,8 @@ type RequestVoteArgs struct {
 //
 type RequestVoteReply struct {
 	// Your data here (2A).
-	term        int
-	voteGranted bool
+	Term        int
+	VoteGranted bool
 }
 
 // RequestVote ...
@@ -185,18 +185,18 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 	// 2A
 	rf.mu.Lock()
 	defer rf.mu.Unlock()
-	reply.voteGranted = false
-	if args.term < rf.currentTerm || args.lastLogIndex < rf.commitIndex {
-		reply.term = rf.currentTerm
+	reply.VoteGranted = false
+	if args.Term < rf.currentTerm || args.LastLogIndex < rf.commitIndex {
+		reply.Term = rf.currentTerm
 		return
 	}
-	if args.term > rf.currentTerm {
+	if args.Term > rf.currentTerm {
 		rf.ChangeState(Follower)
-		rf.currentTerm = args.term
-		rf.votedFor = args.candidatedID
+		rf.currentTerm = args.Term
+		rf.votedFor = args.CandidatedID
 	}
-	reply.term = rf.currentTerm
-	reply.voteGranted = true
+	reply.Term = rf.currentTerm
+	reply.VoteGranted = true
 	go func() {
 		rf.voteGrantedCh <- true
 	}()
@@ -206,18 +206,18 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 
 // AppendEntriesArgs ...
 type AppendEntriesArgs struct {
-	term         int
-	leaderID     int
-	prevLogIndex int
-	prevLogTerm  int
-	entries      []LogEntry
-	leaderCommit int
+	Term         int
+	LeaderID     int
+	PrevLogIndex int
+	PrevLogTerm  int
+	Entries      []LogEntry
+	LeaderCommit int
 }
 
 // AppendEntriesReply ...
 type AppendEntriesReply struct {
-	term    int
-	success bool
+	Term    int
+	Success bool
 }
 
 // AppendEntries ...
@@ -225,14 +225,14 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	rf.mu.Lock()
 	defer rf.mu.Lock()
 
-	reply.term = rf.currentTerm
-	reply.success = false
-	if args.term < rf.currentTerm {
+	reply.Term = rf.currentTerm
+	reply.Success = false
+	if args.Term < rf.currentTerm {
 		return
 	}
-	if args.term > rf.currentTerm {
+	if args.Term > rf.currentTerm {
 		rf.ChangeState(Follower)
-		rf.currentTerm = args.term
+		rf.currentTerm = args.Term
 	}
 	// if len(rf.log) < args.prevLogIndex {
 	// 	return
@@ -299,15 +299,15 @@ func (rf *Raft) StartElection() {
 			reply := RequestVoteReply{}
 
 			rf.mu.Lock()
-			args.term = rf.currentTerm
+			args.Term = rf.currentTerm
 			rf.mu.Unlock()
-			args.candidatedID = rf.me
+			args.CandidatedID = rf.me
 			if rf.sendRequestVote(peer, &args, &reply) {
 				rf.mu.Lock()
-				if reply.voteGranted {
+				if reply.VoteGranted {
 					rf.voteCount++
-				} else if reply.term > rf.currentTerm {
-					rf.currentTerm = reply.term
+				} else if reply.Term > rf.currentTerm {
+					rf.currentTerm = reply.Term
 					rf.ChangeState(Follower)
 				}
 
@@ -328,14 +328,14 @@ func (rf *Raft) HeartBeats() {
 				reply := AppendEntriesReply{}
 
 				rf.mu.Lock()
-				args.term = rf.currentTerm
-				args.leaderID = rf.me
+				args.Term = rf.currentTerm
+				args.LeaderID = rf.me
 				rf.mu.Unlock()
 
 				if rf.sendAppendEntries(peer, &args, &reply) {
 					rf.mu.Lock()
-					if reply.term > rf.currentTerm {
-						rf.currentTerm = reply.term
+					if reply.Term > rf.currentTerm {
+						rf.currentTerm = reply.Term
 						rf.ChangeState(Follower)
 					}
 					rf.mu.Unlock()
@@ -437,6 +437,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 
 	// Your initialization code here (2A, 2B, 2C).
 	// 2A
+	DPrintf("start initialized raft_%d\n", rf.me)
 	rf.currentTerm = 0
 	rf.votedFor = -1
 	rf.log = make([]LogEntry, 0)

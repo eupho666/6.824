@@ -193,10 +193,11 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 	if args.Term > rf.currentTerm {
 		rf.ChangeState(Follower)
 		rf.currentTerm = args.Term
-		rf.votedFor = args.CandidatedID
 	}
+	rf.votedFor = args.CandidatedID
 	reply.Term = rf.currentTerm
 	reply.VoteGranted = true
+	DPrintf("raft%d vote to raft%d in term:%d\n", rf.me, rf.votedFor, rf.currentTerm)
 	go func() {
 		rf.voteGrantedCh <- true
 	}()
@@ -223,7 +224,7 @@ type AppendEntriesReply struct {
 // AppendEntries ...
 func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply) {
 	rf.mu.Lock()
-	defer rf.mu.Lock()
+	defer rf.mu.Unlock()
 
 	reply.Term = rf.currentTerm
 	reply.Success = false
@@ -274,10 +275,12 @@ func (rf *Raft) ChangeState(state Role) {
 	switch state {
 	case Follower:
 		rf.State = Follower
+		rf.voteCount = 0
 		rf.votedFor = -1
 		DPrintf("raft%v become follower in term:%v\n", rf.me, rf.currentTerm)
 	case Candidate:
 		rf.State = Candidate
+		rf.voteCount = 0
 		DPrintf("raft%v become candidate in term:%v\n", rf.me, rf.currentTerm)
 	case Leader:
 		rf.State = Leader
@@ -326,13 +329,11 @@ func (rf *Raft) HeartBeats() {
 			go func(peer int) {
 				args := AppendEntriesArgs{}
 				reply := AppendEntriesReply{}
-
-				rf.mu.Lock()
-				args.Term = rf.currentTerm
 				args.LeaderID = rf.me
-				rf.mu.Unlock()
+				isLeader := false
+				args.Term, isLeader = rf.GetState()
 
-				if rf.sendAppendEntries(peer, &args, &reply) {
+				if  isLeader && rf.sendAppendEntries(peer, &args, &reply) {
 					rf.mu.Lock()
 					if reply.Term > rf.currentTerm {
 						rf.currentTerm = reply.Term
@@ -478,7 +479,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 				case <-rf.appendEntriesCh:
 					rf.timer.Reset(rf.electionTimeout)
 				case <-rf.voteGrantedCh:
-					rf.ChangeState(Follower)
+					//rf.ChangeState(Follower)
 					rf.timer.Reset(rf.electionTimeout)
 				case <-rf.timer.C:
 					rf.mu.Lock()
@@ -489,16 +490,15 @@ func Make(peers []*labrpc.ClientEnd, me int,
 			case Candidate:
 				select {
 				case <-rf.appendEntriesCh:
-					rf.mu.Lock()
-					rf.ChangeState(Follower)
-					rf.mu.Unlock()
 					rf.timer.Reset(rf.electionTimeout)
-
+				case <-rf.voteGrantedCh:
+					//rf.ChangeState(Follower)
+					rf.timer.Reset(rf.electionTimeout)
 				case <-rf.timer.C:
 					rf.StartElection()
 				default:
 					rf.mu.Lock()
-					if rf.voteCount > len(rf.peers)/2 {
+					if rf.voteCount > 1 && rf.voteCount > len(rf.peers)/2 {
 						rf.ChangeState(Leader)
 					}
 					rf.mu.Unlock()

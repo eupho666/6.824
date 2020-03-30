@@ -1,1 +1,89 @@
+2020/03/29 18:20:31 start initialized raft_0
+2020/03/29 18:20:31 raft0's election timeout is:380ms
+2020/03/29 18:20:31 start initialized raft_1
+2020/03/29 18:20:31 raft1's election timeout is:384ms
+2020/03/29 18:20:31 start initialized raft_2
+2020/03/29 18:20:31 raft2's election timeout is:354ms
 Test (2A): initial election ...
+2020/03/29 18:20:31 raft2 become candidate in term:0
+2020/03/29 18:20:31 raft0 vote to raft2 in term:1
+2020/03/29 18:20:31 raft2 vote to raft2 in term:1
+2020/03/29 18:20:31 raft2 become leader in term:1
+2020/03/29 18:20:31 raft1 vote to raft2 in term:1
+  ... Passed --   3.8  3 46756    0
+2020/03/29 18:20:34 start initialized raft_0
+2020/03/29 18:20:34 raft0's election timeout is:308ms
+2020/03/29 18:20:34 start initialized raft_1
+2020/03/29 18:20:34 raft1's election timeout is:350ms
+2020/03/29 18:20:34 start initialized raft_2
+2020/03/29 18:20:34 raft2's election timeout is:389ms
+Test (2A): election after network failure ...
+2020/03/29 18:20:34 ====first election, expect one leader====
+2020/03/29 18:20:35 raft0 become candidate in term:0
+2020/03/29 18:20:35 raft1 become candidate in term:0
+2020/03/29 18:20:35 raft2 become candidate in term:0
+2020/03/29 18:20:36 raft1 become candidate in term:1
+2020/03/29 18:20:36 raft2 become follower in term:2
+2020/03/29 18:20:36 raft0 vote to raft0 in term:2
+2020/03/29 18:20:36 raft1 vote to raft0 in term:2
+2020/03/29 18:20:36 raft2 become candidate in term:2
+2020/03/29 18:20:36 raft0 become candidate in term:1
+2020/03/29 18:20:36 raft0 vote to raft1 in term:2
+2020/03/29 18:20:36 raft1 vote to raft1 in term:2
+2020/03/29 18:20:36 raft2 become follower in term:1
+2020/03/29 18:20:36 raft2 vote to raft1 in term:2
+2020/03/29 18:20:36 raft2 vote to raft2 in term:3
+2020/03/29 18:20:36 raft0 become leader in term:2
+2020/03/29 18:20:36 raft1 become leader in term:2
+2020/03/29 18:20:36 raft0 become follower in term:3
+2020/03/29 18:20:36 raft0 vote to raft2 in term:3
+2020/03/29 18:20:36 raft1 become follower in term:3
+2020/03/29 18:20:36 raft0 become candidate in term:3
+2020/03/29 18:20:36 raft2 vote to raft0 in term:4
+2020/03/29 18:20:36 raft0 vote to raft0 in term:4
+2020/03/29 18:20:36 raft1 vote to raft0 in term:4
+2020/03/29 18:20:36 raft0 become leader in term:4
+2020/03/29 18:20:37 ==== disconnect leader 0 ====
+2020/03/29 18:20:37 raft2 become follower in term:6
+2020/03/29 18:20:38 raft1 become candidate in term:4
+2020/03/29 18:20:38 raft2 become candidate in term:4
+2020/03/29 18:20:38 raft2 become candidate in term:7
+2020/03/29 18:20:41 raft1 vote to raft1 in term:10
+2020/03/29 18:20:41 raft2 vote to raft1 in term:10
+2020/03/29 18:20:41 raft1 become leader in term:10
+2020/03/29 18:20:41 ==== second election, new leader be elected ====
+2020/03/29 18:20:41 old leader 0 rejoin
+2020/03/29 18:20:41 raft0 become follower in term:4
+2020/03/29 18:20:41 raft0 become candidate in term:10
+2020/03/29 18:20:41 raft1 become follower in term:11
+2020/03/29 18:20:41 raft0 vote to raft0 in term:11
+2020/03/29 18:20:41 raft2 become follower in term:10
+2020/03/29 18:20:41 raft2 vote to raft0 in term:11
+2020/03/29 18:20:41 raft1 vote to raft0 in term:11
+2020/03/29 18:20:41 raft0 become leader in term:11
+2020/03/29 18:20:42 ==== disconnect leader: 0 and other node, no leader should be selected ====
+2020/03/29 18:20:43 raft1 become candidate in term:11
+2020/03/29 18:20:43 raft2 become candidate in term:11
+2020/03/29 18:20:44 ==== a quorum arises, it should elect a leader ====
+2020/03/29 18:20:44 raft2 vote to raft1 in term:15
+2020/03/29 18:20:44 raft1 vote to raft2 in term:15
+2020/03/29 18:20:44 raft1 vote to raft1 in term:15
+2020/03/29 18:20:44 raft1 become leader in term:15
+2020/03/29 18:20:45 ==== re-join of last node shouldn't prevent leader from existing ====
+2020/03/29 18:20:45 raft0 become follower in term:15
+2020/03/29 18:20:45 raft0 become candidate in term:15
+2020/03/29 18:20:45 raft1 become follower in term:16
+2020/03/29 18:20:45 raft0 vote to raft0 in term:16
+2020/03/29 18:20:45 raft1 vote to raft0 in term:16
+2020/03/29 18:20:45 raft2 become follower in term:15
+2020/03/29 18:20:45 raft2 vote to raft0 in term:16
+2020/03/29 18:20:45 raft1 become candidate in term:16
+2020/03/29 18:20:45 raft0 become leader in term:16
+2020/03/29 18:20:45 raft0 become follower in term:17
+2020/03/29 18:20:45 raft0 vote to raft1 in term:17
+2020/03/29 18:20:45 raft1 vote to raft1 in term:17
+2020/03/29 18:20:45 raft2 vote to raft1 in term:17
+2020/03/29 18:20:45 raft1 become leader in term:17
+  ... Passed --  10.9  3 85536    0
+PASS
+ok  	raft	14.687s

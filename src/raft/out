@@ -1,0 +1,49 @@
+2020/04/07 23:57:09 start initialized raft_0
+2020/04/07 23:57:09 raft0's election timeout is:313ms
+2020/04/07 23:57:09 start initialized raft_1
+2020/04/07 23:57:09 raft1's election timeout is:360ms
+2020/04/07 23:57:09 start initialized raft_2
+2020/04/07 23:57:09 raft2's election timeout is:388ms
+Test (2A): initial election ...
+2020/04/07 23:57:10 raft0 become candidate in term:0
+2020/04/07 23:57:10 raft0 vote to raft0 in term:1
+2020/04/07 23:57:10 raft1 vote to raft0 in term:0
+2020/04/07 23:57:10 raft0 become leader in term:1
+2020/04/07 23:57:10 raft2 vote to raft0 in term:0
+  ... Passed --   3.5  3 34937    0
+2020/04/07 23:57:13 start initialized raft_0
+2020/04/07 23:57:13 raft0's election timeout is:345ms
+2020/04/07 23:57:13 start initialized raft_1
+2020/04/07 23:57:13 raft1's election timeout is:375ms
+2020/04/07 23:57:13 start initialized raft_2
+2020/04/07 23:57:13 raft2's election timeout is:383ms
+Test (2A): election after network failure ...
+2020/04/07 23:57:13 ====first election, expect one leader====
+2020/04/07 23:57:14 raft1 become candidate in term:0
+2020/04/07 23:57:14 raft2 become candidate in term:0
+2020/04/07 23:57:14 raft2 vote to raft1 in term:1
+2020/04/07 23:57:14 raft0 become candidate in term:0
+2020/04/07 23:57:15 raft2 vote to raft2 in term:3
+2020/04/07 23:57:16 raft1 become candidate in term:1
+2020/04/07 23:57:16 raft2 become candidate in term:1
+2020/04/07 23:57:16 raft0 become follower in term:2
+2020/04/07 23:57:16 raft2 vote to raft0 in term:5
+2020/04/07 23:57:16 raft0 vote to raft1 in term:5
+2020/04/07 23:57:16 raft0 become follower in term:6
+2020/04/07 23:57:16 raft1 become leader in term:6
+2020/04/07 23:57:16 raft2 become follower in term:5
+2020/04/07 23:57:16 raft0 vote to raft0 in term:6
+2020/04/07 23:57:16 raft0 become candidate in term:2
+2020/04/07 23:57:16 raft1 vote to raft1 in term:6
+2020/04/07 23:57:16 ==== disconnect leader 1 ====
+2020/04/07 23:57:17 raft2 become candidate in term:6
+2020/04/07 23:57:17 raft0 become candidate in term:6
+2020/04/07 23:57:21 raft2 become follower in term:15
+2020/04/07 23:57:21 raft2 become candidate in term:15
+2020/04/07 23:57:22 raft2 vote to raft0 in term:18
+2020/04/07 23:57:22 raft0 vote to raft0 in term:18
+--- FAIL: TestReElection2A (11.69s)
+	config.go:326: expected one leader, got none
+FAIL
+exit status 1
+FAIL	raft	15.184s

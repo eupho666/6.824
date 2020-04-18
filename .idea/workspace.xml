@@ -1,8 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+<<<<<<< HEAD
   <component name="ChangeListManager">
     <list default="true" id="64feb64e-3021-4f2a-acff-b85f58c7f6f9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/raft/raft.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/raft/raft.go" afterDir="false" />
+=======
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/src/raft/test_test.go" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="64feb64e-3021-4f2a-acff-b85f58c7f6f9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/6.824.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/6.824.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/launch.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/launch.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/src/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kvraft/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kvraft/common.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/common.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kvraft/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kvraft/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/kvraft/test_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/kvraft/test_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/labgob/labgob.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/labgob/labgob.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/labgob/test_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/labgob/test_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/labrpc/labrpc.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/labrpc/labrpc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/labrpc/test_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/labrpc/test_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/linearizability/bitset.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/linearizability/bitset.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/linearizability/linearizability.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/linearizability/linearizability.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/linearizability/model.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/linearizability/model.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/linearizability/models.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/linearizability/models.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/diskvd.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/diskvd.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/ii.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/ii.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/lockc.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/lockc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/lockd.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/lockd.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/mr-challenge.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mr-challenge.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/mr-testout.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/mr-testout.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/pbc.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/pbc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/pbd.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/pbd.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/pg-being_ernest.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/pg-being_ernest.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/pg-dorian_gray.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/pg-dorian_gray.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/pg-frankenstein.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/pg-frankenstein.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/pg-grimm.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/pg-grimm.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/pg-huckleberry_finn.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/pg-huckleberry_finn.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/pg-metamorphosis.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/pg-metamorphosis.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/pg-sherlock_holmes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/pg-sherlock_holmes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/pg-tom_sawyer.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/pg-tom_sawyer.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/test-ii.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test-ii.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/test-mr.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test-mr.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/test-wc.sh" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/test-wc.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/viewd.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/viewd.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/wc.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/wc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapreduce/common.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapreduce/common.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapreduce/common_map.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapreduce/common_map.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapreduce/common_reduce.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapreduce/common_reduce.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapreduce/common_rpc.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapreduce/common_rpc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapreduce/master.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapreduce/master.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapreduce/master_rpc.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapreduce/master_rpc.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapreduce/master_splitmerge.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapreduce/master_splitmerge.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapreduce/schedule.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapreduce/schedule.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapreduce/test_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapreduce/test_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/mapreduce/worker.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/mapreduce/worker.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/raft/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/out" beforeDir="false" afterPath="$PROJECT_DIR$/src/raft/out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/persister.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/raft/persister.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/raft.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/raft/raft.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/test_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/raft/test_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/raft/util.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/raft/util.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shardkv/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/shardkv/client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shardkv/common.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/shardkv/common.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shardkv/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/shardkv/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shardkv/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/shardkv/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shardkv/test_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/shardkv/test_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shardmaster/client.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/shardmaster/client.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shardmaster/common.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/shardmaster/common.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shardmaster/config.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/shardmaster/config.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shardmaster/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/shardmaster/server.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shardmaster/test_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/shardmaster/test_test.go" afterDir="false" />
+>>>>>>> 7be836d7fd008dd676db29ee701d673b01ba7342
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -18,11 +96,16 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/raft/raft.go">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="338">
               <caret line="219" lean-forward="true" selection-start-line="219" selection-end-line="219" />
               <folding>
                 <element signature="e#591#640#0" expanded="true" />
               </folding>
+=======
+            <state relative-caret-position="134">
+              <caret line="189" selection-start-line="189" selection-end-line="189" />
+>>>>>>> 7be836d7fd008dd676db29ee701d673b01ba7342
             </state>
           </provider>
         </entry>
@@ -42,7 +125,10 @@
       <find>leaderCh</find>
       <find>rf.election</find>
       <find>changToFollower</find>
+<<<<<<< HEAD
       <find>2A</find>
+=======
+>>>>>>> 7be836d7fd008dd676db29ee701d673b01ba7342
     </findStrings>
     <replaceStrings>
       <replace>PrevLogIndex</replace>
@@ -66,7 +152,10 @@
         <option value="$PROJECT_DIR$/src/raft/test_test.go" />
         <option value="$PROJECT_DIR$/src/raft/util.go" />
         <option value="$PROJECT_DIR$/src/raft/out" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/src/raft/raft1.go" />
+=======
+>>>>>>> 7be836d7fd008dd676db29ee701d673b01ba7342
         <option value="$PROJECT_DIR$/src/raft/raft.go" />
       </list>
     </option>
@@ -82,9 +171,14 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
+<<<<<<< HEAD
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="976" />
+=======
+    <option name="x" value="647" />
+    <option name="width" value="1281" />
+>>>>>>> 7be836d7fd008dd676db29ee701d673b01ba7342
     <option name="height" value="1056" />
   </component>
   <component name="ProjectView">
@@ -92,6 +186,10 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+<<<<<<< HEAD
+=======
+      <pane id="Scope" />
+>>>>>>> 7be836d7fd008dd676db29ee701d673b01ba7342
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -114,7 +212,10 @@
           <select />
         </subPane>
       </pane>
+<<<<<<< HEAD
       <pane id="Scope" />
+=======
+>>>>>>> 7be836d7fd008dd676db29ee701d673b01ba7342
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -150,12 +251,15 @@
     </option>
   </component>
   <component name="RunManager" selected="Go Test.test 2A">
+<<<<<<< HEAD
     <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
       <module name="6.824" />
       <go_parameters value="-i" />
       <kind value="FILE" />
       <method v="2" />
     </configuration>
+=======
+>>>>>>> 7be836d7fd008dd676db29ee701d673b01ba7342
     <configuration name="TestBasicAgree2B in raft" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="6.824" />
       <working_directory value="$PROJECT_DIR$/src/raft" />
@@ -178,6 +282,7 @@
       <pattern value="^TestReElection2A$" />
       <method v="2" />
     </configuration>
+<<<<<<< HEAD
     <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
       <module name="6.824" />
       <go_parameters value="-i" />
@@ -185,6 +290,8 @@
       <kind value="DIRECTORY" />
       <method v="2" />
     </configuration>
+=======
+>>>>>>> 7be836d7fd008dd676db29ee701d673b01ba7342
     <configuration name="test 2A" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true">
       <module name="6.824" />
       <working_directory value="$PROJECT_DIR$/src/raft" />
@@ -206,6 +313,21 @@
     <option name="ACTIVE_ACTIONS" value=",EXPORTABILITY_SORTER,ALPHA_COMPARATOR" />
   </component>
   <component name="TestHistory">
+<<<<<<< HEAD
+=======
+    <history-entry file="TestBasicAgree2B_in_raft - 2020.03.30 at 22h 08m 56s.xml">
+      <configuration name="TestBasicAgree2B in raft" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestBasicAgree2B_in_raft - 2020.03.30 at 22h 09m 18s.xml">
+      <configuration name="TestBasicAgree2B in raft" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestBasicAgree2B_in_raft - 2020.03.30 at 22h 10m 22s.xml">
+      <configuration name="TestBasicAgree2B in raft" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+    <history-entry file="TestBasicAgree2B_in_raft - 2020.03.30 at 22h 11m 53s.xml">
+      <configuration name="TestBasicAgree2B in raft" configurationId="GoTestRunConfiguration" />
+    </history-entry>
+>>>>>>> 7be836d7fd008dd676db29ee701d673b01ba7342
     <history-entry file="TestBasicAgree2B_in_raft - 2020.03.30 at 22h 12m 12s.xml">
       <configuration name="TestBasicAgree2B in raft" configurationId="GoTestRunConfiguration" />
     </history-entry>
@@ -224,6 +346,7 @@
     <history-entry file="test_2A - 2020.03.31 at 01h 02m 51s.xml">
       <configuration name="test 2A" configurationId="GoTestRunConfiguration" />
     </history-entry>
+<<<<<<< HEAD
     <history-entry file="test_2A - 2020.04.17 at 13h 37m 46s.xml">
       <configuration name="test 2A" configurationId="GoTestRunConfiguration" />
     </history-entry>
@@ -236,6 +359,8 @@
     <history-entry file="test_2A - 2020.04.18 at 14h 30m 20s.xml">
       <configuration name="test 2A" configurationId="GoTestRunConfiguration" />
     </history-entry>
+=======
+>>>>>>> 7be836d7fd008dd676db29ee701d673b01ba7342
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -250,8 +375,13 @@
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
+<<<<<<< HEAD
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4807074" visible="true" weight="0.13646056" />
       <window_info id="Structure" order="1" sideWeight="0.5192926" side_tool="true" weight="0.13646056" />
+=======
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.48373103" weight="0.13646056" />
+      <window_info active="true" id="Structure" order="1" sideWeight="0.51626897" side_tool="true" visible="true" weight="0.13646056" />
+>>>>>>> 7be836d7fd008dd676db29ee701d673b01ba7342
       <window_info id="Favorites" order="2" sideWeight="0.5140998" side_tool="true" weight="0.13539445" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
@@ -263,7 +393,11 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
+<<<<<<< HEAD
       <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3253796" />
+=======
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32719395" />
+>>>>>>> 7be836d7fd008dd676db29ee701d673b01ba7342
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -272,9 +406,15 @@
       <window_info anchor="right" id="Coverage" order="4" side_tool="true" />
     </layout>
     <layout-to-restore>
+<<<<<<< HEAD
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4807074" visible="true" weight="0.13646056" />
       <window_info id="Structure" order="1" sideWeight="0.5192926" side_tool="true" weight="0.13646056" />
       <window_info id="Favorites" order="2" sideWeight="0.5140998" side_tool="true" weight="0.13539445" />
+=======
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4903226" visible="true" weight="0.13166311" />
+      <window_info id="Structure" order="1" sideWeight="0.5096774" side_tool="true" weight="0.12991266" />
+      <window_info id="Favorites" order="2" sideWeight="0.50867677" side_tool="true" weight="0.13006397" />
+>>>>>>> 7be836d7fd008dd676db29ee701d673b01ba7342
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.45661604" />
@@ -285,7 +425,11 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
+<<<<<<< HEAD
       <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3253796" />
+=======
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.3275488" />
+>>>>>>> 7be836d7fd008dd676db29ee701d673b01ba7342
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -316,6 +460,16 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+    <entry file="file://$PROJECT_DIR$/src/labrpc/labrpc.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="218">
+          <caret line="173" selection-start-line="173" selection-end-line="173" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 7be836d7fd008dd676db29ee701d673b01ba7342
     <entry file="file://C:/Go/src/math/rand/rand.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="226">
@@ -354,7 +508,17 @@
     <entry file="file://$PROJECT_DIR$/Makefile">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/raft/util.go" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/raft/util.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+>>>>>>> 7be836d7fd008dd676db29ee701d673b01ba7342
     <entry file="file://$PROJECT_DIR$/src/mapreduce/common.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="362">
@@ -362,6 +526,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/raft/persister.go" />
     <entry file="file://$PROJECT_DIR$/src/raft/out" />
     <entry file="file://C:/Go/src/runtime/panic.go">
@@ -383,15 +548,51 @@
     <entry file="file://$PROJECT_DIR$/src/raft/test_test.go">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-624" />
+=======
+    <entry file="file://$PROJECT_DIR$/src/raft/persister.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/raft/config.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="57">
+          <caret line="314" selection-start-line="314" selection-end-line="314" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/raft/test_test.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1092">
+          <caret line="57" column="35" selection-start-line="57" selection-start-column="35" selection-end-line="57" selection-end-column="35" />
+          <folding>
+            <element signature="e#220#317#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/raft/out">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="988">
+          <caret line="38" column="52" selection-start-line="38" selection-start-column="52" selection-end-line="38" selection-end-column="52" />
+        </state>
+>>>>>>> 7be836d7fd008dd676db29ee701d673b01ba7342
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/raft/raft.go">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="338">
           <caret line="219" lean-forward="true" selection-start-line="219" selection-end-line="219" />
           <folding>
             <element signature="e#591#640#0" expanded="true" />
           </folding>
+=======
+        <state relative-caret-position="134">
+          <caret line="189" selection-start-line="189" selection-end-line="189" />
+>>>>>>> 7be836d7fd008dd676db29ee701d673b01ba7342
         </state>
       </provider>
     </entry>

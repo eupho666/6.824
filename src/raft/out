@@ -1,49 +1,579 @@
-2020/04/07 23:57:09 start initialized raft_0
-2020/04/07 23:57:09 raft0's election timeout is:313ms
-2020/04/07 23:57:09 start initialized raft_1
-2020/04/07 23:57:09 raft1's election timeout is:360ms
-2020/04/07 23:57:09 start initialized raft_2
-2020/04/07 23:57:09 raft2's election timeout is:388ms
-Test (2A): initial election ...
-2020/04/07 23:57:10 raft0 become candidate in term:0
-2020/04/07 23:57:10 raft0 vote to raft0 in term:1
-2020/04/07 23:57:10 raft1 vote to raft0 in term:0
-2020/04/07 23:57:10 raft0 become leader in term:1
-2020/04/07 23:57:10 raft2 vote to raft0 in term:0
-  ... Passed --   3.5  3 34937    0
-2020/04/07 23:57:13 start initialized raft_0
-2020/04/07 23:57:13 raft0's election timeout is:345ms
-2020/04/07 23:57:13 start initialized raft_1
-2020/04/07 23:57:13 raft1's election timeout is:375ms
-2020/04/07 23:57:13 start initialized raft_2
-2020/04/07 23:57:13 raft2's election timeout is:383ms
-Test (2A): election after network failure ...
-2020/04/07 23:57:13 ====first election, expect one leader====
-2020/04/07 23:57:14 raft1 become candidate in term:0
-2020/04/07 23:57:14 raft2 become candidate in term:0
-2020/04/07 23:57:14 raft2 vote to raft1 in term:1
-2020/04/07 23:57:14 raft0 become candidate in term:0
-2020/04/07 23:57:15 raft2 vote to raft2 in term:3
-2020/04/07 23:57:16 raft1 become candidate in term:1
-2020/04/07 23:57:16 raft2 become candidate in term:1
-2020/04/07 23:57:16 raft0 become follower in term:2
-2020/04/07 23:57:16 raft2 vote to raft0 in term:5
-2020/04/07 23:57:16 raft0 vote to raft1 in term:5
-2020/04/07 23:57:16 raft0 become follower in term:6
-2020/04/07 23:57:16 raft1 become leader in term:6
-2020/04/07 23:57:16 raft2 become follower in term:5
-2020/04/07 23:57:16 raft0 vote to raft0 in term:6
-2020/04/07 23:57:16 raft0 become candidate in term:2
-2020/04/07 23:57:16 raft1 vote to raft1 in term:6
-2020/04/07 23:57:16 ==== disconnect leader 1 ====
-2020/04/07 23:57:17 raft2 become candidate in term:6
-2020/04/07 23:57:17 raft0 become candidate in term:6
-2020/04/07 23:57:21 raft2 become follower in term:15
-2020/04/07 23:57:21 raft2 become candidate in term:15
-2020/04/07 23:57:22 raft2 vote to raft0 in term:18
-2020/04/07 23:57:22 raft0 vote to raft0 in term:18
---- FAIL: TestReElection2A (11.69s)
-	config.go:326: expected one leader, got none
-FAIL
-exit status 1
-FAIL	raft	15.184s
+2020/04/25 22:33:07 start initialized raft_0
+2020/04/25 22:33:07 start initialized raft_1
+2020/04/25 22:33:07 [CheckMatchIndexAndSetCommitIndex] rf.me:0 begin.
+2020/04/25 22:33:07 [BeFollower] raft 0 be follower in term 0
+2020/04/25 22:33:07 start initialized raft_2
+2020/04/25 22:33:07 [BeFollower] raft 1 be follower in term 0
+2020/04/25 22:33:07 [CheckMatchIndexAndSetCommitIndex] rf.me:1 begin.
+Test (2B): rejoin of partitioned leader ...
+2020/04/25 22:33:07 [BeFollower] raft 2 be follower in term 0
+2020/04/25 22:33:07 [CheckMatchIndexAndSetCommitIndex] rf.me:2 begin.
+2020/04/25 22:33:07 [BeFollower] me:1 timeout
+2020/04/25 22:33:07 [BeCandidate] raft 1 be candidate in term 1
+2020/04/25 22:33:07 [StartElection] raft 1 start send RequestVoteRPC
+2020/04/25 22:33:07 [RequestVote RPC] raft 2 vote to 1 in term 0
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [RequestVote RPC] raft 0 vote to 1 in term 0
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:1
+2020/04/25 22:33:07 [BeLeader] raft 1 be leader in term 1
+2020/04/25 22:33:07 [SendLogEntryMessageToAll] raft leader 1 send log[1]: &{1 1 0 0 [] 0} to raft 2 
+2020/04/25 22:33:07 [AppendEntryRPC] raft 2 success in term 1, current commited index:0 ,Log: [{-1 0}]
+2020/04/25 22:33:07 [SendLogEntryMessageToAll] raft leader 1 send log[1]: &{1 1 0 0 [] 0} to raft 0 
+2020/04/25 22:33:07 [CheckMatchIndexAndSetCommitIndex] rf.me:1 matchIndex:[0 0 0] last_commit_index:0
+2020/04/25 22:33:07 [AppendEntryRPC] raft 0 success in term 1, current commited index:0 ,Log: [{-1 0}]
+2020/04/25 22:33:07 [CheckMatchIndexAndSetCommitIndex] rf.me:1 matchIndex:[0 0 0] last_commit_index:0
+2020/04/25 22:33:07 [Start] me:1 command:101 index:1 rf.Logs:[{-1 0} {101 1}]
+2020/04/25 22:33:07 [config.one] found leader raft 1
+2020/04/25 22:33:07 [config.one] command 101 have been committed in 0 servers
+2020/04/25 22:33:07 [config.one] command 101 have been committed in 0 servers
+2020/04/25 22:33:07 [config.one] command 101 have been committed in 0 servers
+2020/04/25 22:33:07 [config.one] command 101 have been committed in 0 servers
+2020/04/25 22:33:07 [config.one] command 101 have been committed in 0 servers
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:2
+2020/04/25 22:33:07 [SendLogEntryMessageToAll] raft leader 1 send log[1]: &{1 1 0 0 [{101 1}] 0} to raft 2 
+2020/04/25 22:33:07 [SendLogEntryMessageToAll] raft leader 1 send log[1]: &{1 1 0 0 [{101 1}] 0} to raft 0 
+2020/04/25 22:33:07 [AppendEntryRPC] raft 0 append 1 logEntry
+2020/04/25 22:33:07 [AppendEntryRPC] raft 0 success in term 1, current commited index:0 ,Log: [{-1 0} {101 1}]
+2020/04/25 22:33:07 [AppendEntryRPC] raft 2 append 1 logEntry
+2020/04/25 22:33:07 [AppendEntryRPC] raft 2 success in term 1, current commited index:0 ,Log: [{-1 0} {101 1}]
+2020/04/25 22:33:07 [CheckMatchIndexAndSetCommitIndex] rf.me:1 matchIndex:[1 1 0] last_commit_index:0
+2020/04/25 22:33:07 [CheckMatchIndexAndSetCommitIndex] rf.me:1 commitIndex:0->1 currentTerm:1 rf.Logs:[{-1 0} {101 1}]
+2020/04/25 22:33:07 [NotifyApplyCh] me:1 push to applyCh, Index:1 Command:101
+2020/04/25 22:33:07 [CheckMatchIndexAndSetCommitIndex] rf.me:1 matchIndex:[1 1 1] last_commit_index:1
+2020/04/25 22:33:07 [config.one] command 101 have been committed in 1 servers
+2020/04/25 22:33:07 [config.one] command 101 have been committed in 1 servers
+2020/04/25 22:33:07 [config.one] command 101 have been committed in 1 servers
+2020/04/25 22:33:07 [config.one] command 101 have been committed in 1 servers
+2020/04/25 22:33:07 [config.one] command 101 have been committed in 1 servers
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:2
+2020/04/25 22:33:07 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [] 1} to raft 2 
+2020/04/25 22:33:07 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [] 1} to raft 0 
+2020/04/25 22:33:07 [NotifyApplyCh] me:2 push to applyCh, Index:1 Command:101
+2020/04/25 22:33:07 [AppendEntryRPC] raft 2 success in term 1, current commited index:1 ,Log: [{-1 0} {101 1}]
+2020/04/25 22:33:07 [NotifyApplyCh] me:0 push to applyCh, Index:1 Command:101
+2020/04/25 22:33:07 [AppendEntryRPC] raft 0 success in term 1, current commited index:1 ,Log: [{-1 0} {101 1}]
+2020/04/25 22:33:07 [CheckMatchIndexAndSetCommitIndex] rf.me:1 matchIndex:[1 1 1] last_commit_index:1
+2020/04/25 22:33:07 [CheckMatchIndexAndSetCommitIndex] rf.me:1 matchIndex:[1 1 1] last_commit_index:1
+2020/04/25 22:33:07 [config.one] command 101 have been committed in 3 servers
+2020/04/25 22:33:07 [BeLeader] me:1 default. rf.role:2
+2020/04/25 22:33:07 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [] 1} to raft 2 
+2020/04/25 22:33:07 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [] 1} to raft 0 
+2020/04/25 22:33:07 [AppendEntryRPC] raft 2 success in term 1, current commited index:1 ,Log: [{-1 0} {101 1}]
+2020/04/25 22:33:07 [CheckMatchIndexAndSetCommitIndex] rf.me:1 matchIndex:[1 1 1] last_commit_index:1
+2020/04/25 22:33:07 [AppendEntryRPC] raft 0 success in term 1, current commited index:1 ,Log: [{-1 0} {101 1}]
+2020/04/25 22:33:07 [CheckMatchIndexAndSetCommitIndex] rf.me:1 matchIndex:[1 1 1] last_commit_index:1
+2020/04/25 22:33:08 [BeLeader] me:1 default. rf.role:2
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [] 1} to raft 2 
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [] 1} to raft 0 
+2020/04/25 22:33:08 [AppendEntryRPC] raft 0 success in term 1, current commited index:1 ,Log: [{-1 0} {101 1}]
+2020/04/25 22:33:08 [AppendEntryRPC] raft 2 success in term 1, current commited index:1 ,Log: [{-1 0} {101 1}]
+2020/04/25 22:33:08 [CheckMatchIndexAndSetCommitIndex] rf.me:1 matchIndex:[1 1 1] last_commit_index:1
+2020/04/25 22:33:08 [CheckMatchIndexAndSetCommitIndex] rf.me:1 matchIndex:[1 1 1] last_commit_index:1
+2020/04/25 22:33:08 [BeLeader] me:1 default. rf.role:2
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [] 1} to raft 0 
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [] 1} to raft 2 
+2020/04/25 22:33:08 [AppendEntryRPC] raft 2 success in term 1, current commited index:1 ,Log: [{-1 0} {101 1}]
+2020/04/25 22:33:08 [AppendEntryRPC] raft 0 success in term 1, current commited index:1 ,Log: [{-1 0} {101 1}]
+2020/04/25 22:33:08 [CheckMatchIndexAndSetCommitIndex] rf.me:1 matchIndex:[1 1 1] last_commit_index:1
+2020/04/25 22:33:08 [CheckMatchIndexAndSetCommitIndex] rf.me:1 matchIndex:[1 1 1] last_commit_index:1
+2020/04/25 22:33:08 [BeLeader] me:1 default. rf.role:2
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [] 1} to raft 2 
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [] 1} to raft 0 
+2020/04/25 22:33:08 [AppendEntryRPC] raft 2 success in term 1, current commited index:1 ,Log: [{-1 0} {101 1}]
+2020/04/25 22:33:08 [AppendEntryRPC] raft 0 success in term 1, current commited index:1 ,Log: [{-1 0} {101 1}]
+2020/04/25 22:33:08 [CheckMatchIndexAndSetCommitIndex] rf.me:1 matchIndex:[1 1 1] last_commit_index:1
+2020/04/25 22:33:08 [CheckMatchIndexAndSetCommitIndex] rf.me:1 matchIndex:[1 1 1] last_commit_index:1
+2020/04/25 22:33:08 [BeLeader] me:1 default. rf.role:2
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [] 1} to raft 0 
+2020/04/25 22:33:08 [AppendEntryRPC] raft 0 success in term 1, current commited index:1 ,Log: [{-1 0} {101 1}]
+2020/04/25 22:33:08 [CheckMatchIndexAndSetCommitIndex] rf.me:1 matchIndex:[1 1 1] last_commit_index:1
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [] 1} to raft 2 
+2020/04/25 22:33:08 [AppendEntryRPC] raft 2 success in term 1, current commited index:1 ,Log: [{-1 0} {101 1}]
+2020/04/25 22:33:08 [CheckMatchIndexAndSetCommitIndex] rf.me:1 matchIndex:[1 1 1] last_commit_index:1
+2020/04/25 22:33:08 === old leader disconnect ===
+2020/04/25 22:33:08 [Start] me:1 command:102 index:2 rf.Logs:[{-1 0} {101 1} {102 1}]
+2020/04/25 22:33:08 [Start] me:1 command:103 index:3 rf.Logs:[{-1 0} {101 1} {102 1} {103 1}]
+2020/04/25 22:33:08 [Start] me:1 command:104 index:4 rf.Logs:[{-1 0} {101 1} {102 1} {103 1} {104 1}]
+2020/04/25 22:33:08 ===  new leader commit 103 ===
+2020/04/25 22:33:08 [BeLeader] me:1 default. rf.role:2
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 2 
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 0 
+2020/04/25 22:33:08 [BeLeader] me:1 default. rf.role:2
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 2 
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 0 
+2020/04/25 22:33:08 [BeLeader] me:1 default. rf.role:2
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 0 
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 2 
+2020/04/25 22:33:08 [BeLeader] me:1 default. rf.role:2
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 2 
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 0 
+2020/04/25 22:33:08 [BeLeader] me:1 default. rf.role:2
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 2 
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 0 
+2020/04/25 22:33:08 [BeFollower] me:0 timeout
+2020/04/25 22:33:08 [BeCandidate] raft 0 be candidate in term 2
+2020/04/25 22:33:08 [StartElection] raft 0 start send RequestVoteRPC
+2020/04/25 22:33:08 [RequestVote RPC] raft 2 vote to 0 in term 1
+2020/04/25 22:33:08 [BeLeader] me:0 default. rf.role:1
+2020/04/25 22:33:08 [BeLeader] me:0 default. rf.role:1
+2020/04/25 22:33:08 [BeLeader] me:0 default. rf.role:1
+2020/04/25 22:33:08 [BeLeader] me:0 default. rf.role:1
+2020/04/25 22:33:08 [BeLeader] me:0 default. rf.role:1
+2020/04/25 22:33:08 [BeLeader] me:0 default. rf.role:1
+2020/04/25 22:33:08 [BeLeader] me:0 default. rf.role:1
+2020/04/25 22:33:08 [BeLeader] raft 0 be leader in term 2
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [] 1} to raft 2 
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [] 1} to raft 1 
+2020/04/25 22:33:08 [AppendEntryRPC] raft 2 success in term 2, current commited index:1 ,Log: [{-1 0} {101 1}]
+2020/04/25 22:33:08 [CheckMatchIndexAndSetCommitIndex] rf.me:0 matchIndex:[1 0 1] last_commit_index:1
+2020/04/25 22:33:08 [Start] me:0 command:103 index:2 rf.Logs:[{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:08 [config.one] found leader raft 0
+2020/04/25 22:33:08 [config.one] command 103 have been committed in 0 servers
+2020/04/25 22:33:08 [config.one] command 103 have been committed in 0 servers
+2020/04/25 22:33:08 [config.one] command 103 have been committed in 0 servers
+2020/04/25 22:33:08 [BeLeader] me:1 default. rf.role:2
+2020/04/25 22:33:08 [config.one] command 103 have been committed in 0 servers
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 2 
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 0 
+2020/04/25 22:33:08 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 1} to raft 2 
+2020/04/25 22:33:08 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 1} to raft 1 
+2020/04/25 22:33:08 [AppendEntryRPC] raft 2 append 1 logEntry
+2020/04/25 22:33:08 [AppendEntryRPC] raft 2 success in term 2, current commited index:1 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:08 [CheckMatchIndexAndSetCommitIndex] rf.me:0 matchIndex:[2 0 2] last_commit_index:1
+2020/04/25 22:33:08 [CheckMatchIndexAndSetCommitIndex] rf.me:0 commitIndex:1->2 currentTerm:2 rf.Logs:[{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:08 [NotifyApplyCh] me:0 push to applyCh, Index:2 Command:103
+2020/04/25 22:33:08 [config.one] command 103 have been committed in 1 servers
+2020/04/25 22:33:08 [config.one] command 103 have been committed in 1 servers
+2020/04/25 22:33:09 [config.one] command 103 have been committed in 1 servers
+2020/04/25 22:33:09 [config.one] command 103 have been committed in 1 servers
+2020/04/25 22:33:09 [BeLeader] me:1 default. rf.role:2
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 2 
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 0 
+2020/04/25 22:33:09 [config.one] command 103 have been committed in 1 servers
+2020/04/25 22:33:09 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:09 [NotifyApplyCh] me:2 push to applyCh, Index:2 Command:103
+2020/04/25 22:33:09 [AppendEntryRPC] raft 2 success in term 2, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:09 [CheckMatchIndexAndSetCommitIndex] rf.me:0 matchIndex:[2 0 2] last_commit_index:2
+2020/04/25 22:33:09 [config.one] command 103 have been committed in 2 servers
+2020/04/25 22:33:09 [BeLeader] me:1 default. rf.role:2
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 2 
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 0 
+2020/04/25 22:33:09 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:09 [AppendEntryRPC] raft 2 success in term 2, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:09 [CheckMatchIndexAndSetCommitIndex] rf.me:0 matchIndex:[2 0 2] last_commit_index:2
+2020/04/25 22:33:09 [BeLeader] me:1 default. rf.role:2
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 2 
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 0 
+2020/04/25 22:33:09 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:09 [AppendEntryRPC] raft 2 success in term 2, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:09 [CheckMatchIndexAndSetCommitIndex] rf.me:0 matchIndex:[2 0 2] last_commit_index:2
+2020/04/25 22:33:09 [BeLeader] me:1 default. rf.role:2
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 2 
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 0 
+2020/04/25 22:33:09 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:09 [AppendEntryRPC] raft 2 success in term 2, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:09 [CheckMatchIndexAndSetCommitIndex] rf.me:0 matchIndex:[2 0 2] last_commit_index:2
+2020/04/25 22:33:09 [BeLeader] me:1 default. rf.role:2
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 2 
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 0 
+2020/04/25 22:33:09 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:09 [AppendEntryRPC] raft 2 success in term 2, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:09 [CheckMatchIndexAndSetCommitIndex] rf.me:0 matchIndex:[2 0 2] last_commit_index:2
+2020/04/25 22:33:09 [BeLeader] me:1 default. rf.role:2
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 2 
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1}] 1} to raft 0 
+2020/04/25 22:33:09 ===  disconnect new leader ===
+2020/04/25 22:33:09 === rejoin old leader===
+2020/04/25 22:33:09 [Start] me:1 command:104 index:5 rf.Logs:[{-1 0} {101 1} {102 1} {103 1} {104 1} {104 1}]
+2020/04/25 22:33:09 [config.one] found leader raft 1
+2020/04/25 22:33:09 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:09 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:09 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:09 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:09 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:09 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:09 [BeLeader] me:1 default. rf.role:2
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1} {104 1}] 1} to raft 2 
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 1 send log[2]: &{1 1 1 1 [{102 1} {103 1} {104 1} {104 1}] 1} to raft 0 
+2020/04/25 22:33:09 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:09 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:09 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:09 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:09 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:09 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:09 [Beleader] raft 1 trans to follower: {2 -1 false}
+2020/04/25 22:33:09 [BeFollower] me:1 timeout
+2020/04/25 22:33:09 [BeCandidate] raft 1 be candidate in term 3
+2020/04/25 22:33:09 [StartElection] raft 1 start send RequestVoteRPC
+2020/04/25 22:33:09 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:09 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:09 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:09 [BeFollower] me:2 timeout
+2020/04/25 22:33:09 [BeCandidate] raft 2 be candidate in term 4
+2020/04/25 22:33:09 [StartElection] raft 2 start send RequestVoteRPC
+2020/04/25 22:33:09 [RequestVote RPC] raft 1 vote to 2 in term 3
+2020/04/25 22:33:09 [BeCandidate] raft 1 trans to follower in term 3
+2020/04/25 22:33:09 [BeLeader] me:2 default. rf.role:1
+2020/04/25 22:33:09 [BeLeader] me:2 default. rf.role:1
+2020/04/25 22:33:09 [BeLeader] me:2 default. rf.role:1
+2020/04/25 22:33:09 [BeLeader] me:2 default. rf.role:1
+2020/04/25 22:33:09 [BeLeader] me:2 default. rf.role:1
+2020/04/25 22:33:09 [BeLeader] me:2 default. rf.role:1
+2020/04/25 22:33:09 [BeLeader] me:2 default. rf.role:1
+2020/04/25 22:33:09 [BeLeader] me:2 default. rf.role:1
+2020/04/25 22:33:09 [BeLeader] me:2 default. rf.role:1
+2020/04/25 22:33:09 [BeLeader] me:2 default. rf.role:1
+2020/04/25 22:33:09 [BeLeader] me:2 default. rf.role:1
+2020/04/25 22:33:09 [BeLeader] me:2 default. rf.role:1
+2020/04/25 22:33:09 [BeLeader] me:2 default. rf.role:1
+2020/04/25 22:33:09 [BeLeader] raft 2 be leader in term 4
+2020/04/25 22:33:09 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 1 
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 0 
+2020/04/25 22:33:09 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:09 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:09 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:09 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:09 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:09 [BeLeader] me:2 default. rf.role:2
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 2 send log[1]: &{4 2 0 0 [{101 1} {103 2}] 2} to raft 1 
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 0 
+2020/04/25 22:33:09 [NotifyApplyCh] me:1 push to applyCh, Index:2 Command:103
+2020/04/25 22:33:09 [AppendEntryRPC] raft 1 success in term 4, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:09 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[0 2 2] last_commit_index:2
+2020/04/25 22:33:09 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:09 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:09 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:09 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:09 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:09 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [BeLeader] me:2 default. rf.role:2
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 1 
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 0 
+2020/04/25 22:33:10 [AppendEntryRPC] raft 1 success in term 4, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:10 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[0 2 2] last_commit_index:2
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [BeLeader] me:2 default. rf.role:2
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 1 
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 0 
+2020/04/25 22:33:10 [AppendEntryRPC] raft 1 success in term 4, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:10 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[0 2 2] last_commit_index:2
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [BeLeader] me:2 default. rf.role:2
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 1 
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 0 
+2020/04/25 22:33:10 [AppendEntryRPC] raft 1 success in term 4, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:10 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[0 2 2] last_commit_index:2
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [BeLeader] me:2 default. rf.role:2
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 1 
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 0 
+2020/04/25 22:33:10 [AppendEntryRPC] raft 1 success in term 4, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:10 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[0 2 2] last_commit_index:2
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [BeLeader] me:2 default. rf.role:2
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 1 
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 0 
+2020/04/25 22:33:10 [AppendEntryRPC] raft 1 success in term 4, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:10 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[0 2 2] last_commit_index:2
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [BeLeader] me:2 default. rf.role:2
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 1 
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 0 
+2020/04/25 22:33:10 [AppendEntryRPC] raft 1 success in term 4, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:10 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[0 2 2] last_commit_index:2
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [BeLeader] me:2 default. rf.role:2
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 1 
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 0 
+2020/04/25 22:33:10 [AppendEntryRPC] raft 1 success in term 4, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:10 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[0 2 2] last_commit_index:2
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [BeLeader] me:2 default. rf.role:2
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 1 
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 0 
+2020/04/25 22:33:10 [AppendEntryRPC] raft 1 success in term 4, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:10 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[0 2 2] last_commit_index:2
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [BeLeader] me:2 default. rf.role:2
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 1 
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 0 
+2020/04/25 22:33:10 [AppendEntryRPC] raft 1 success in term 4, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:10 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[0 2 2] last_commit_index:2
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [BeLeader] me:2 default. rf.role:2
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 1 
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 0 
+2020/04/25 22:33:10 [AppendEntryRPC] raft 1 success in term 4, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:10 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[0 2 2] last_commit_index:2
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:10 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:10 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:10 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [BeLeader] me:2 default. rf.role:2
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 1 
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 0 
+2020/04/25 22:33:11 [AppendEntryRPC] raft 1 success in term 4, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:11 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[0 2 2] last_commit_index:2
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [BeLeader] me:2 default. rf.role:2
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 1 
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 0 
+2020/04/25 22:33:11 [AppendEntryRPC] raft 1 success in term 4, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:11 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[0 2 2] last_commit_index:2
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [BeLeader] me:2 default. rf.role:2
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 1 
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 0 
+2020/04/25 22:33:11 [AppendEntryRPC] raft 1 success in term 4, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:11 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[0 2 2] last_commit_index:2
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [BeLeader] me:2 default. rf.role:2
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 1 
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 0 
+2020/04/25 22:33:11 [AppendEntryRPC] raft 1 success in term 4, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:11 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[0 2 2] last_commit_index:2
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [BeLeader] me:2 default. rf.role:2
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 1 
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 0 
+2020/04/25 22:33:11 [AppendEntryRPC] raft 1 success in term 4, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:11 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[0 2 2] last_commit_index:2
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [BeLeader] me:2 default. rf.role:2
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 1 
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [] 2} to raft 0 
+2020/04/25 22:33:11 [AppendEntryRPC] raft 1 success in term 4, current commited index:2 ,Log: [{-1 0} {101 1} {103 2}]
+2020/04/25 22:33:11 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[0 2 2] last_commit_index:2
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [Start] me:2 command:104 index:3 rf.Logs:[{-1 0} {101 1} {103 2} {104 4}]
+2020/04/25 22:33:11 [config.one] found leader raft 2
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 0 servers
+2020/04/25 22:33:11 [BeLeader] me:2 default. rf.role:2
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [{104 4}] 2} to raft 1 
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [{104 4}] 2} to raft 0 
+2020/04/25 22:33:11 [AppendEntryRPC] raft 1 append 1 logEntry
+2020/04/25 22:33:11 [AppendEntryRPC] raft 1 success in term 4, current commited index:2 ,Log: [{-1 0} {101 1} {103 2} {104 4}]
+2020/04/25 22:33:11 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[0 3 3] last_commit_index:2
+2020/04/25 22:33:11 [CheckMatchIndexAndSetCommitIndex] rf.me:2 commitIndex:2->3 currentTerm:4 rf.Logs:[{-1 0} {101 1} {103 2} {104 4}]
+2020/04/25 22:33:11 [NotifyApplyCh] me:2 push to applyCh, Index:3 Command:104
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 1 servers
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 1 servers
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 1 servers
+2020/04/25 22:33:11 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 1 servers
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 1 servers
+2020/04/25 22:33:11 [BeLeader] me:2 default. rf.role:2
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 2 send log[4]: &{4 2 3 4 [] 3} to raft 1 
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [{104 4}] 3} to raft 0 
+2020/04/25 22:33:11 [NotifyApplyCh] me:1 push to applyCh, Index:3 Command:104
+2020/04/25 22:33:11 [AppendEntryRPC] raft 1 success in term 4, current commited index:3 ,Log: [{-1 0} {101 1} {103 2} {104 4}]
+2020/04/25 22:33:11 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[0 3 3] last_commit_index:3
+2020/04/25 22:33:11 [config.one] command 104 have been committed in 2 servers
+2020/04/25 22:33:11 === all together  ===
+2020/04/25 22:33:11 [Start] me:2 command:105 index:4 rf.Logs:[{-1 0} {101 1} {103 2} {104 4} {105 4}]
+2020/04/25 22:33:11 [config.one] found leader raft 2
+2020/04/25 22:33:11 [config.one] command 105 have been committed in 0 servers
+2020/04/25 22:33:11 [config.one] command 105 have been committed in 0 servers
+2020/04/25 22:33:11 [BeLeader] me:0 default. rf.role:2
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 0 send log[3]: &{2 0 2 2 [] 2} to raft 2 
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 0 send log[2]: &{2 0 1 1 [{103 2}] 2} to raft 1 
+2020/04/25 22:33:11 [config.one] command 105 have been committed in 0 servers
+2020/04/25 22:33:11 [config.one] command 105 have been committed in 0 servers
+2020/04/25 22:33:11 [BeLeader] me:2 default. rf.role:2
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 2 send log[4]: &{4 2 3 4 [{105 4}] 3} to raft 1 
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 2 send log[3]: &{4 2 2 2 [{104 4} {105 4}] 3} to raft 0 
+2020/04/25 22:33:11 [AppendEntryRPC] raft 1 append 1 logEntry
+2020/04/25 22:33:11 [AppendEntryRPC] raft 1 success in term 4, current commited index:3 ,Log: [{-1 0} {101 1} {103 2} {104 4} {105 4}]
+2020/04/25 22:33:11 [AppendEntryRPC] raft 0 append 2 logEntry
+2020/04/25 22:33:11 [NotifyApplyCh] me:0 push to applyCh, Index:3 Command:104
+2020/04/25 22:33:11 [AppendEntryRPC] raft 0 success in term 2, current commited index:3 ,Log: [{-1 0} {101 1} {103 2} {104 4} {105 4}]
+2020/04/25 22:33:11 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[0 4 4] last_commit_index:3
+2020/04/25 22:33:11 [CheckMatchIndexAndSetCommitIndex] rf.me:2 commitIndex:3->4 currentTerm:4 rf.Logs:[{-1 0} {101 1} {103 2} {104 4} {105 4}]
+2020/04/25 22:33:11 [NotifyApplyCh] me:2 push to applyCh, Index:4 Command:105
+2020/04/25 22:33:11 [config.one] command 105 have been committed in 1 servers
+2020/04/25 22:33:11 [config.one] command 105 have been committed in 1 servers
+2020/04/25 22:33:11 [config.one] command 105 have been committed in 1 servers
+2020/04/25 22:33:11 [Beleader] raft 0 trans to follower: {4 -1 false}
+2020/04/25 22:33:11 [BeFollower] me:0 timeout
+2020/04/25 22:33:11 [BeCandidate] raft 0 be candidate in term 5
+2020/04/25 22:33:11 [BeCandidate] raft 0 trans to follower in term 4
+2020/04/25 22:33:11 [StartElection] raft 0 start send RequestVoteRPC
+2020/04/25 22:33:11 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[4 4 4] last_commit_index:4
+2020/04/25 22:33:11 [StartElection] raft 0 is not Candidate
+2020/04/25 22:33:11 [config.one] command 105 have been committed in 1 servers
+2020/04/25 22:33:11 [config.one] command 105 have been committed in 1 servers
+2020/04/25 22:33:11 [BeLeader] me:2 default. rf.role:2
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 2 send log[5]: &{4 2 4 4 [] 4} to raft 1 
+2020/04/25 22:33:11 [SendLogEntryMessageToAll] raft leader 2 send log[5]: &{4 2 4 4 [] 4} to raft 0 
+2020/04/25 22:33:11 [NotifyApplyCh] me:1 push to applyCh, Index:4 Command:105
+2020/04/25 22:33:11 [NotifyApplyCh] me:0 push to applyCh, Index:4 Command:105
+2020/04/25 22:33:11 [AppendEntryRPC] raft 0 success in term 4, current commited index:4 ,Log: [{-1 0} {101 1} {103 2} {104 4} {105 4}]
+2020/04/25 22:33:11 [AppendEntryRPC] raft 1 success in term 4, current commited index:4 ,Log: [{-1 0} {101 1} {103 2} {104 4} {105 4}]
+2020/04/25 22:33:11 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[4 4 4] last_commit_index:4
+2020/04/25 22:33:11 [CheckMatchIndexAndSetCommitIndex] rf.me:2 matchIndex:[4 4 4] last_commit_index:4
+2020/04/25 22:33:11 [config.one] command 105 have been committed in 3 servers
+  ... Passed --   4.7  3  154    4
+2020/04/25 22:33:11 [Kill] me:0
+2020/04/25 22:33:11 [Kill] me:0 return
+2020/04/25 22:33:11 [Kill] me:1
+2020/04/25 22:33:11 [Kill] me:1 return
+2020/04/25 22:33:11 [Kill] me:2
+2020/04/25 22:33:11 [Kill] me:2 return
+2020/04/25 22:33:11 [BeFollower] me:0 quit
+PASS
+2020/04/25 22:33:11 [CheckMatchIndexAndSetCommitIndex] rf.me:2 quit.
+ok  	raft	4.739s

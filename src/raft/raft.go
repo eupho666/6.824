@@ -18,15 +18,14 @@ package raft
 //
 
 import (
+	"bytes"
+	"encoding/gob"
 	"labrpc"
 	"math/rand"
 	"sort"
 	"sync"
 	"time"
 )
-
-// import "bytes"
-// import "labgob"
 
 //
 // as each Raft peer becomes aware that successive log entries are
@@ -137,6 +136,14 @@ func (rf *Raft) persist() {
 	// e.Encode(rf.yyy)
 	// data := w.Bytes()
 	// rf.persister.SaveRaftState(data)
+	w := new(bytes.Buffer)
+	e := gob.NewEncoder(w)
+	e.Encode(rf.currentTerm)
+	e.Encode(rf.votedFor)
+	e.Encode(rf.log)
+	data := w.Bytes()
+	rf.persister.SaveRaftState(data)
+
 }
 
 //
@@ -159,6 +166,17 @@ func (rf *Raft) readPersist(data []byte) {
 	//   rf.xxx = xxx
 	//   rf.yyy = yyy
 	// }
+
+	rf.mu.Lock()
+	defer rf.mu.Unlock()
+
+	r := bytes.NewBuffer(data)
+	d := gob.NewDecoder(r)
+	d.Decode(&rf.currentTerm)
+	d.Decode(&rf.votedFor)
+	d.Decode(&rf.log)
+	DPrintf("[readPersist] me:%v CurrentTerm:%v VotedFor:%v Logs:%v", rf.me, rf.currentTerm, rf.votedFor, rf.log)
+
 }
 
 // RequestVoteArgs ...
@@ -259,61 +277,70 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 	if args.Term < rf.currentTerm {
 		reply.Term = rf.currentTerm
 		reply.Success = false
-		return
-	}
-	// 2. Reply false if log doesn’t contain an entry at prevLogIndex whose term matches prevLogTerm
-	log_is_less := args.PrevLogIndex+1 > len(rf.log)
-	term_dismatch := !log_is_less && args.PrevLogIndex > 0 && args.PrevLogTerm != rf.log[args.PrevLogIndex].Term
-	if log_is_less || term_dismatch {
-		reply.Term = rf.currentTerm
-		reply.Success = false
+		DPrintf("[AppendEntries] raft %d reject raft %d because of old term", rf.me, args.LeaderID)
 
-		if log_is_less {
-			reply.ConflictIndex = len(rf.log)
-			reply.ConflictTerm = -1
-		} else if term_dismatch {
-			reply.ConflictTerm = rf.log[args.PrevLogIndex].Term
-			for i := 1; i < old_len; i++ {
-				if (rf.log[i].Term == reply.ConflictTerm) {
-					reply.ConflictIndex = i
-					break
+	} else {
+		// 2. Reply false if log doesn’t contain an entry at prevLogIndex whose term matches prevLogTerm
+		log_is_less := args.PrevLogIndex+1 > len(rf.log)
+		term_dismatch := !log_is_less && args.PrevLogIndex > 0 && args.PrevLogTerm != rf.log[args.PrevLogIndex].Term
+		if log_is_less || term_dismatch {
+			reply.Term = rf.currentTerm
+			reply.Success = false
+
+			if log_is_less {
+				reply.ConflictIndex = len(rf.log)
+				reply.ConflictTerm = -1
+				DPrintf("[AppendEntries] raft %d reject raft %d because of less log", rf.me, args.LeaderID)
+
+			} else if term_dismatch {
+				reply.ConflictTerm = rf.log[args.PrevLogIndex].Term
+				for i := 1; i < old_len; i++ {
+					if (rf.log[i].Term == reply.ConflictTerm) {
+						reply.ConflictIndex = i
+						break
+					}
+				}
+				DPrintf("[AppendEntries] raft %d reject raft %d because of conflict term\n conflict entries: %v", rf.me, args.LeaderID, rf.log[args.PrevLogIndex:len(rf.log)])
+
+			}
+
+		} else {
+			// 3. If an existing entry conflicts with a new one (same index but different terms),
+			// delete the existing entry and all that follow it
+			old_committed_index := rf.commitIndex
+
+			if old_len != args.PrevLogIndex+1 {
+				rf.log = rf.log[:args.PrevLogIndex+1]
+				//old_committed_index = args.PrevLogIndex
+			}
+			// 4. Append any new entries not already in the log
+
+			rf.log = append(rf.log, args.Entries...)
+			if len(rf.log) > old_len {
+				DPrintf("[AppendEntryRPC] raft %d append %d logEntry", rf.me, len(rf.log)-old_len)
+			}
+
+			// 5. If leaderCommit > commitIndex, set commitIndex = min(leaderCommit, index of last new entry)
+			if args.LeaderCommit > rf.commitIndex {
+				if args.LeaderCommit < len(rf.log)-1 {
+					rf.commitIndex = args.LeaderCommit
+				} else {
+					rf.commitIndex = len(rf.log) - 1
 				}
 			}
+			rf.NotifyApplyCh(old_committed_index)
+			reply.Term = args.Term
+			reply.Success = true
+
+			// todo: [AppendEntryRPC] votefor number may should be -1
+			DPrintf("[AppendEntryRPC] raft %d success in term %d, current commited index:%d ,Log: %v", rf.me, rf.currentTerm, rf.commitIndex, rf.log)
+
 		}
-		return
+		// todo: 注意, 只要leader的term不小于自己, 就有必要更新计时器!!即使添加entry失败!!
+		ch := ChangeToFollower{args.Term, args.LeaderID, true}
+		rf.PushChangeToFollower(ch)
+
 	}
-
-	// 3. If an existing entry conflicts with a new one (same index but different terms),
-	// delete the existing entry and all that follow it
-	old_committed_index := rf.commitIndex
-
-	if old_len != args.PrevLogIndex+1 {
-		rf.log = rf.log[:args.PrevLogIndex+1]
-		//old_committed_index = args.PrevLogIndex
-	}
-	// 4. Append any new entries not already in the log
-
-	rf.log = append(rf.log, args.Entries...)
-	if len(rf.log) > old_len {
-		DPrintf("[AppendEntryRPC] raft %d append %d logEntry", rf.me, len(rf.log) - old_len)
-	}
-
-	// 5. If leaderCommit > commitIndex, set commitIndex = min(leaderCommit, index of last new entry)
-	if args.LeaderCommit > rf.commitIndex {
-		if args.LeaderCommit < len(rf.log)-1 {
-			rf.commitIndex = args.LeaderCommit
-		} else {
-			rf.commitIndex = len(rf.log) - 1
-		}
-	}
-	rf.NotifyApplyCh(old_committed_index)
-	reply.Term = args.Term
-	reply.Success = true
-
-	// todo: [AppendEntryRPC] votefor number may should be -1
-	DPrintf("[AppendEntryRPC] raft %d success in term %d, current commited index:%d ,Log: %v", rf.me, rf.currentTerm, rf.commitIndex, rf.log)
-	ch := ChangeToFollower{args.Term, -1, true}
-	rf.PushChangeToFollower(ch)
 
 }
 
@@ -346,6 +373,8 @@ func (rf *Raft) StartElection(win chan bool) {
 	}
 	rf.currentTerm++
 	rf.votedFor = rf.me
+
+	// 因为上面修改了currentTerm, votedFor
 	rf.persist()
 	voted[rf.me] = true
 
@@ -578,6 +607,7 @@ func (rf *Raft) TransitionToFollower(c ChangeToFollower) {
 		rf.currentTerm = c.term
 	}
 	rf.InitNextIndex()
+	// 因为上面修改了 currentTerm
 	rf.persist()
 	rf.changeToFollowerDone <- true
 	if c.shouldResetTimer {
@@ -628,11 +658,11 @@ func (rf *Raft) CheckMatchIndexAndSetCommitIndex() {
 		DPrintf("[CheckMatchIndexAndSetCommitIndex] rf.me:%v matchIndex:%v last_commit_index:%v", rf.me, rf.matchIndex, last_commit_index)
 
 		if new_commit_on_majority {
-			DPrintf("[CheckMatchIndexAndSetCommitIndex] rf.me:%v commitIndex:%v->%v currentTerm:%v rf.Logs:%v",rf.me, last_commit_index, commit_index_majority,  rf.currentTerm, rf.log)
+			DPrintf("[CheckMatchIndexAndSetCommitIndex] rf.me:%v commitIndex:%v->%v currentTerm:%v rf.Logs:%v", rf.me, last_commit_index, commit_index_majority, rf.currentTerm, rf.log)
 			rf.commitIndex = commit_index_majority
 			rf.NotifyApplyCh(last_commit_index)
 		} else if new_commit_on_all {
-			DPrintf("[CheckMatchIndexAndSetCommitIndex] rf.me:%v commitIndex:%v->%v currentTerm:%v rf.Logs:%v",rf.me, last_commit_index, commit_index_all,  rf.currentTerm, rf.log)
+			DPrintf("[CheckMatchIndexAndSetCommitIndex] rf.me:%v commitIndex:%v->%v currentTerm:%v rf.Logs:%v", rf.me, last_commit_index, commit_index_all, rf.currentTerm, rf.log)
 			rf.commitIndex = commit_index_all
 			rf.NotifyApplyCh(last_commit_index)
 		}
@@ -676,8 +706,8 @@ func (rf *Raft) HandleInconsistency(server_index int, reply AppendEntriesReply) 
 		return
 	}
 
-	for j := 1; j < len(rf.log); j++ {
-		if rf.log[j].Term == reply.Term && rf.log[j+1].Term == reply.Term {
+	for j := 1; j < len(rf.log)-1; j++ {
+		if rf.log[j].Term == reply.Term && rf.log[j+1].Term != reply.Term {
 			rf.nextIndex[server_index] = j + 1
 			return
 		}
@@ -697,7 +727,7 @@ func (rf *Raft) SendLogEntryMessageToAll() {
 				if args == nil {
 					return
 				}
-				DPrintf("[SendLogEntryMessageToAll] raft leader %d send log[%d]: %v to raft %d ", rf.me, args.PrevLogIndex+1, args, server_index)
+				DPrintf("[SendLogEntryMessageToAll] raft leader %d send to raft %d log[%d:%d]: %v ", rf.me, server_index, args.PrevLogIndex+1, args.PrevLogIndex+1+len(args.Entries), args)
 
 				reply := AppendEntriesReply{}
 				send_ok := rf.sendAppendEntries(server_index, args, &reply)

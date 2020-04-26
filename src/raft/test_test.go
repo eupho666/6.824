@@ -707,6 +707,8 @@ func TestFigure82C(t *testing.T) {
 		}
 	}
 
+	DPrintf(" === lastcheck ===")
+
 	cfg.one(rand.Int(), servers, true)
 
 	cfg.end()

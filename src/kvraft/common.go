@@ -1,8 +1,12 @@
 package raftkv
 
 const (
-	OK       = "OK"
-	ErrNoKey = "ErrNoKey"
+	OK             = "OK"
+	ErrNoKey       = "ErrNoKey"
+	CommandTimeout = 1500
+	KVGet = "Get"
+	KVPut = "Put"
+	KVAppend = "Append"
 )
 
 type Err string
@@ -15,6 +19,12 @@ type PutAppendArgs struct {
 	// You'll have to add definitions here.
 	// Field names must start with capital letters,
 	// otherwise RPC will break.
+
+	// the client will retry the command with a new leader,
+	// causing it to be executed a second time.
+	// The solution is for clients to assign unique serial numbers to every command
+	ClientId int64
+	Seq      int
 }
 
 type PutAppendReply struct {
@@ -25,6 +35,8 @@ type PutAppendReply struct {
 type GetArgs struct {
 	Key string
 	// You'll have to add definitions here.
+	ClientId int64
+	Seq      int
 }
 
 type GetReply struct {

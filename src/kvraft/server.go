@@ -9,7 +9,7 @@ import (
 	"time"
 )
 
-const Debug = 1
+const Debug = 0
 
 func DPrintf(format string, a ...interface{}) (n int, err error) {
 	if Debug > 0 {
@@ -84,7 +84,6 @@ func (kv *KVServer) getOpChFromMap(index int) chan Op {
 // original methods
 
 func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
-	// Your code here.
 	index, term, isLeader := kv.rf.Start(kv.getCommand(args))
 	if isLeader {
 		DPrintf("[KVServer.Get] race check: try lock")
@@ -106,7 +105,6 @@ func (kv *KVServer) Get(args *GetArgs, reply *GetReply) {
 }
 
 func (kv *KVServer) PutAppend(args *PutAppendArgs, reply *PutAppendReply) {
-	// Your code here.
 	DPrintf("[KVServer.PutAppend] kvserver[%d] begin", kv.me)
 
 	DPrintf("[KVServer.PutAppend] race check: try lock")
@@ -177,23 +175,19 @@ func (kv *KVServer) Kill() {
 // for any long-running work.
 //
 func StartKVServer(servers []*labrpc.ClientEnd, me int, persister *raft.Persister, maxraftstate int) *KVServer {
-	// call labgob.Register on structures you want
-	// Go's RPC library to marshall/unmarshall.
+
 	labgob.Register(Op{})
 
 	kv := new(KVServer)
 	kv.me = me
 	kv.maxraftstate = maxraftstate
 
-	// You may need initialization code here.
 	kv.database = make(map[string]string)
 	kv.clientSeq = make(map[int64]int)
 	kv.opChDone = make(map[int]chan Op)
 
 	kv.applyCh = make(chan raft.ApplyMsg)
 	kv.rf = raft.Make(servers, me, persister, kv.applyCh)
-
-	// You may need initialization code here.
 
 	go func() {
 		for msg := range kv.applyCh {
